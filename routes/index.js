@@ -15,6 +15,7 @@ router.post('/', function(req, res, next){
 
   var input = req.body;
   var txt = { text: input.text }
+  var intent =  
   workspace = credential.watson.conversation.workspace_id;
   conversation.message({workspace_id: workspace , input: txt}, function(err, response){
     if(err){

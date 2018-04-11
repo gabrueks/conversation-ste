@@ -38,16 +38,17 @@
   	$("#status-options").removeClass("active");
   });
 
-  function newMessage() {
+  function newMessage(param) {
   	message = $(".message-input input").val();
-  	if($.trim(message) == '') {
-  		return false;
-  	}
-  	$('<li class="sent"><img src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-  	$('.message-input input').val(null);
-  	$('.contact.active .preview').html('<span>You: </span>' + message);
-  	$(".messages").animate({ scrollTop: $(document).height() }, "fast");
-
+  	// if($.trim(message) == '') {
+  	// 	return false;
+  	// }
+    if(param != 1){
+    	$('<li class="sent"><img src="https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
+    	$('.message-input input').val(null);
+    	$('.contact.active .preview').html('<span>You: </span>' + message);
+    	$(".messages").animate({ scrollTop: $(document).height() }, "fast");
+    }
     var url = "/";
     fetch(url,{
   headers: {
@@ -69,8 +70,12 @@
     });
   };
 
+  $(document).ready(function() {
+      newMessage(1);
+  });
+
   $('.submit').click(function() {
-    newMessage();
+    newMessage(0);
   });
 
   $(window).on('keydown', function(e) {
