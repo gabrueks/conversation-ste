@@ -1,3 +1,4 @@
+  var cont;
   $(".messages").animate({ scrollTop: $(document).height() }, "fast");
 
   $("#profile-img").click(function() {
@@ -80,7 +81,7 @@
 
   $(window).on('keydown', function(e) {
     if (e.which == 13) {
-      newMessage();
+      newMessage(0);
       return false;
     }
   });
